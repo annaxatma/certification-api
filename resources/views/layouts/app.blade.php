@@ -53,10 +53,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ $active_welcome ?? '' }}" aria-current="page" href="{{ route('vehicle_order.index') }}">Order</a>
+                            <a class="nav-link {{ $active_welcome ?? '' }}" aria-current="page" href="{{ route('vehicle_order.index') }}">Vehicle Order</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ $active_projects ?? '' }}" href="{{ route('order.index') }}">Customer</a>
+                            <a class="nav-link {{ $active_projects ?? '' }}" href="{{ route('order.index') }}">Order</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ $active_courses ?? '' }}" href="{{ route('vehicle.index') }}">Vehicle</a>

@@ -25,18 +25,9 @@
             @foreach ($vehicle_order as $vehicle_orders)
                 <tr>
                     @php $index++ @endphp
-                    <td>{{ $vehicle_orders['Order_Id'] }}</td>
+                    <td>{{ $vehicle_orders['Order_id'] }}</td>
                     <td>{{ $vehicle_orders['Vehicle_Id'] }}</td>
-                    <td>{{ $vehicle_orders['Total_Price'] }}</td>
-                    <td class="text-center">
-                        {{-- <form action="{{ route('vehicle_order.destroy',$vehicle_orders->Vehicleorder_id) }}" method="POST">   
-                            <a class="btn btn-info" href="{{ route('vehicle_order.show', $vehicle_orders->Vehicleorder_id) }}">Show</a>
-                            <a class="btn btn-primary" href="{{ route('vehicle_order.edit', $vehicle_orders->Vehicleorder_id) }}">Edit</a>
-                            @csrf
-                            @method('DELETE')      
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form> --}}
-                    </td>
+                    <td>{{ $vehicle_orders->vehicle->Price}}</td>
                 </tr>
             @endforeach
         </tbody>

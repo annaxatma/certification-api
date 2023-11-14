@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('truck', function (Blueprint $table) {
             $table->foreign('Truck_Id')
-            ->references('vehicle_id')->on('vehicle')
+            ->references('Vehicle_id')->on('vehicle')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

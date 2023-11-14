@@ -58,20 +58,18 @@ class VehicleController extends Controller
         $vehicle_type = $request->input('Vehicle_Type');
         
         if ($vehicle_type == "Car") {
-            $vehicle = Car::create([
-                'Car_id' => $vehicle->Vehicle_Id,
+            // car() ambil function dari model vehicle (relasi ke car)
+            $vehicle->car()->create([
                 'Fuel_Type' => $request->input('Fuel_Type'),
                 'Trunk_Size' => $request->input('Trunk_Size')
             ]);
         } elseif ($vehicle_type == "Motorcycle") {
-            $vehicle = Motorcycle::create([
-                'Motorcycle_id' => $vehicle->Vehicle_Id,
+            $vehicle->motorcycle()->create([
                 'Baggage_Size' => $request->input('Baggage_Size'),
                 'Gasoline_Capacity' => $request->input('Gasoline_Capacity')
             ]);
         } elseif ($vehicle_type == "Truck") {
-            $vehicle = Truck::create([
-                'Truck_Id' => $vehicle->Vehicle_Id,
+            $vehicle->truck()->create([
                 'Number_Wheels' => $request->input('Number_Wheels'),
                 'Cargo_Size' => $request->input('Cargo_Size')
             ]);
@@ -88,9 +86,9 @@ class VehicleController extends Controller
      */
     public function show(string $id)
     {
-        $vehicle = Vehicle::with(['Car', 'Motorcycle', 'Truck'])->where('id', $id)->first();
+        $vehicle = Vehicle::with(['Car', 'Motorcycle', 'Truck'])->where('Vehicle_Id', $id)->first();
 
-        return view('VehicleDetails', compact('vehicle'));
+        return view('ViewVehicle', compact('vehicle'));
     }
 
     /**
@@ -101,7 +99,7 @@ class VehicleController extends Controller
      */
     public function edit(string $id)
     {
-        $vehicle = Vehicle::with(['Car', 'Motorcycle', 'Truck'])->where('id', $id)->first();
+        $vehicle = Vehicle::with(['Car', 'Motorcycle', 'Truck'])->where('Vehicle_Id', $id)->first();
 
         return view('UpdateVehicle', compact('vehicle'));
     }
@@ -115,11 +113,11 @@ class VehicleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $vehicle = Vehicle::where('id', $id)->first();
+        $vehicle = Vehicle::where('Vehicle_Id', $id)->first();
 
         // check if the new update is the same as they use to be or not
         if($request->Vehicle_Type == $vehicle->Vehicle_Type){
-            Vehicle::where('id', $id)->update([
+            $vehicle->update([
                 'Model' => $request->Model,
                 'Year' => $request->Year,
                 'Total_Passenger' => $request->Total_Passenger,
@@ -129,22 +127,19 @@ class VehicleController extends Controller
             ]);
             
             if ($request->input('Vehicle_Type') == "Car"){
-                Mobil::where('Mobil_ID', $id)->update([
-                    'Car_id' => $request->id,
+                $vehicle->car()->update([
                     'Fuel_Type' => $request->Fuel_Type,
                     'Trunk_Size' => $request->Trunk_Size,
                 ]);
-                
+
             } elseif ($request->input('Vehicle_Type') == "Motorcycle"){
-                Motor::where('Motor_ID', $id)->update([
-                    'Motorcycle_id' => $request->id,
+                $vehicle->motorcycle()->update([
                     'Baggage_Size' => $request->Baggage_Size,
                     'Gasoline_Capacity' => $request->Gasoline_Capacity,
                 ]);
         
             } elseif ($request->input('Vehicle_Type') == "Truck"){
-                Truck::where('Truck_ID', $id)->update([
-                    'Truck_Id' => $request->id,
+                $vehicle->truck()->update([
                     'Number_Wheels' => $request->Number_Wheels,
                     'Cargo_Size' => $request->Cargo_Size,
                 ]);
@@ -218,7 +213,7 @@ class VehicleController extends Controller
                 ]);
             }
         }
-        return redirect(route('Vehicle.index'));
+        return redirect(route('vehicle.index'));
     }
 
     /**
@@ -229,18 +224,18 @@ class VehicleController extends Controller
      */
     public function destroy(string $id)
     {
-        $vehicle = Vehicle::where('id', $id)->first();
+        $vehicle = Vehicle::where('Vehicle_Id', $id)->first();
         if ($vehicle->Vehicle_Type == "Car"){
-            Mobil::where('Car_id', $id)->delete();
+            Car::where('Car_id', $id)->delete();
             
         } elseif ($vehicle->Vehicle_Type == "Motorcycle"){
-            Motor::where('Motorcycle_id', $id)->delete();
+            Motorcycle::where('Motorcycle_id', $id)->delete();
             
         } elseif ($vehicle->Vehicle_Type == "Truck"){
             Truck::where('Truck_Id', $id)->delete();
         }
 
-        Vehicle::where('id', $id)->delete();
-        return redirect(route('Vehicle.index'));
+        $vehicle->delete();
+        return redirect(route('vehicle.index'));
     }
 }

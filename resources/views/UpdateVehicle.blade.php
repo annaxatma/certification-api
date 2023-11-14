@@ -7,7 +7,7 @@
 
             <!-- Content Row -->
             <div class="">
-                <form action="{{ route('vehicle.update', $vehicle->id) }}" method="post">
+                <form action="{{ route('vehicle.update', $vehicle) }}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="PATCH">
                     <div class="form-group">
@@ -68,24 +68,24 @@
                         
                                 if (selectedVehicle == 'Car') {
                                     @if ($vehicle->Vehicle_Type == "Car")
-                                    inputField = 'Fuel_Type: <input type="text" name="Fuel_Type" value="{{ $vehicle->mobil->Fuel_Type }}" required>';
-                                    inputField2 = 'Trunk_Size: <input type="number" name="Trunk_Size" value="{{ $vehicle->mobil->Trunk_Size }}" required>';
+                                    inputField = 'Fuel_Type: <input type="text" name="Fuel_Type" value="{{ $vehicle->car->Fuel_Type }}" required>';
+                                    inputField2 = 'Trunk_Size: <input type="number" name="Trunk_Size" value="{{ $vehicle->car->Trunk_Size }}" required>';
                                     @else
                                     inputField = 'Fuel_Type: <input type="text" name="Fuel_Type" required>';
                                     inputField2 = 'Trunk_Size: <input type="number" name="Trunk_Size" required>';
                                     @endif
                                 } else if (selectedVehicle == 'Motorcycle') {
                                     @if ($vehicle->Vehicle_Type == "Motorcycle")
-                                    inputField = 'Baggage_Size: <input type="number" name="Baggage_Size" value="{{ $vehicle->truck->Baggage_Size }}"required>';
-                                    inputField2 = 'Gasoline_Capacity: <input type="number" name="Gasoline_Capacity" value="{{ $vehicle->truck->Gasoline_Capacity }}" required>';
+                                    inputField = 'Baggage_Size: <input type="number" name="Baggage_Size" value="{{ $vehicle->motorcycle->Baggage_Size }}"required>';
+                                    inputField2 = 'Gasoline_Capacity: <input type="number" name="Gasoline_Capacity" value="{{ $vehicle->motorcycle->Gasoline_Capacity }}" required>';
                                     @else
                                     inputField = 'Baggage_Size: <input type="number" name="Baggage_Size" required>';
                                     inputField2 = 'Gasoline_Capacity: <input type="number" name="Gasoline_Capacity"  required>';
                                     @endif
                                 } else if (selectedVehicle == 'Truck') {
                                     @if ($vehicle->Vehicle_Type == "Truck")
-                                    inputField = 'Number_Wheels: <input type="text" id="jumlahBan" name="Number_Wheels" value="{{ $vehicle->motor->Number_Wheels }}" required>';
-                                    inputField2 = 'Cargo_Size: <input type="number" name="Cargo_Size" value="{{ $vehicle->motor->Cargo_Size }}" required>';
+                                    inputField = 'Number_Wheels: <input type="text" id="jumlahBan" name="Number_Wheels" value="{{ $vehicle->truck->Number_Wheels }}" required>';
+                                    inputField2 = 'Cargo_Size: <input type="number" name="Cargo_Size" value="{{ $vehicle->truck->Cargo_Size }}" required>';
                                     @else
                                     inputField = 'Number_Wheels: <input type="text" id="jumlahBan" name="Number_Wheels" required>';
                                     inputField2 = 'Cargo_Size: <input type="number" name="Cargo_Size" required>';

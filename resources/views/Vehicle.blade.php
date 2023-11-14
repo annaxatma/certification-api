@@ -42,9 +42,8 @@
                         <td>{{ $vehicles->car->Trunk_Size }}</td>
 
                         <td class="text-center">
-                            <form action="{{ route('vehicle.destroy',$vehicles->id) }}" method="POST">   
-                            <a class="btn btn-info" href="{{ route('vehicle.show', $vehicles->id) }}">Show</a>
-                            <a class="btn btn-primary" href="{{ route('vehicle.edit', $vehicles->id) }}">Edit</a>
+                            <form action="{{ route('vehicle.destroy',$vehicles) }}" method="POST">   
+                            <a class="btn btn-primary" href="{{ route('vehicle.edit', $vehicles) }}">Edit</a>
                             @csrf
                             @method('DELETE')      
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -80,7 +79,7 @@
                     <tr>
                         @php $index++ @endphp
                         
-                        @if ($vehicles->motor)
+                        @if ($vehicles->motorcycle)
                         <td>{{ $vehicles['Model'] }}</td>
                         <td>{{ $vehicles['Year'] }}</td>
                         <td>{{ $vehicles['Total_Passenger'] }}</td>
@@ -91,9 +90,8 @@
                             <td>{{ $vehicles->motorcycle->Gasoline_Capacity }}</td>
     
                             <td class="text-center">
-                                <form action="{{ route('vehicle.destroy',$vehicles->id) }}" method="POST">   
-                                <a class="btn btn-info" href="{{ route('vehicle.show', $vehicles->id) }}">Show</a>
-                                <a class="btn btn-primary" href="{{ route('vehicle.edit', $vehicles->id) }}">Edit</a>
+                                <form action="{{ route('vehicle.destroy',$vehicles) }}" method="POST">   
+                                <a class="btn btn-primary" href="{{ route('vehicle.edit', $vehicles) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')      
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -139,9 +137,8 @@
                             <td>{{ $vehicles->truck->Cargo_Size }}</td>
     
                             <td class="text-center">
-                                <form action="{{ route('vehicle.destroy',$vehicles->id) }}" method="POST">   
-                                <a class="btn btn-info" href="{{ route('vehicle.show', $vehicles->id) }}">Show</a>
-                                <a class="btn btn-primary" href="{{ route('vehicle.edit', $vehicles->id) }}">Edit</a>
+                                <form action="{{ route('vehicle.destroy',$vehicles) }}" method="POST">   
+                                <a class="btn btn-primary" href="{{ route('vehicle.edit', $vehicles) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')      
                                 <button type="submit" class="btn btn-danger">Delete</button>

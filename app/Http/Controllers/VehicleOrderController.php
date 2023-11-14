@@ -19,7 +19,7 @@ class VehicleOrderController extends Controller
      */
     public function index()
     {
-        $vehicle_order = Order::all();
+        $vehicle_order = VehicleOrder::with('vehicle')->get();
 
         return view('VehicleOrder', compact('vehicle_order'));
     }
@@ -45,7 +45,7 @@ class VehicleOrderController extends Controller
     public function store(Request $request)
     {
         $vehicle_order = VehicleOrder::create([
-            'Order_Id' => $request->Order_Id,
+            'Order_id' => $request->Order_id,
             'Vehicle_Id' => $request->Vehicle_Id
         ]);
         
@@ -61,14 +61,14 @@ class VehicleOrderController extends Controller
     public function show($id)
     {
         $vehicle_order = Order::where('Vehicleorder_id', $id)->first();
-        $vehicle = Vehicle::where('id', $vehicle_order->Vehicle_Id)->first();
+        $vehicle = Vehicle::where('Vehicle_Id', $vehicle_order->Vehicle_Id)->first();
         
-        if($vehicle->Vehicle_Type == "Mobil"){
-            $vehicle = Mobil::where('Mobil_ID', $vehicle_order->Vehicle_Id)->first();
-        } elseif ($vehicle->Vehicle_Type == "Truk") {
-            $vehicle = Truck::where('Truck_ID', $vehicle_order->Vehicle_Id)->first();
-        } elseif ($vehicle->Vehicle_Type == "Motor") {
-            $vehicle = Motor::where('Motor_ID', $vehicle_order->Vehicle_Id)->first();
+        if($vehicle->Vehicle_Type == "Car"){
+            $vehicle = Car::where('Car_Id', $vehicle_order->Vehicle_Id)->first();
+        } elseif ($vehicle->Vehicle_Type == "Truck") {
+            $vehicle = Truck::where('Truck_Id', $vehicle_order->Vehicle_Id)->first();
+        } elseif ($vehicle->Vehicle_Type == "Motorcycle") {
+            $vehicle = Motorcycle::where('Motorcycle_Id', $vehicle_order->Vehicle_Id)->first();
         }
 
         $order = Order::where('Order_Id', $vehicle_order->Order_Id)->first();

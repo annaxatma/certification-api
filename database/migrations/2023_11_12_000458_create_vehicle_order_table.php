@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('vehicle_order', function (Blueprint $table) {
             $table->integer('Vehicleorder_id')->autoIncrement();
-            $table->integer('Order_Id');
+            $table->integer('Order_id');
             $table->integer('Vehicle_Id');
             $table->timestamps();
         });

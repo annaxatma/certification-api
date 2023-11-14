@@ -24,8 +24,9 @@ use App\Http\Controllers\VehicleOrderController;
 //     return view('checkDb');
 // });
 
+Route::resource('vehicle_order', VehicleOrderController::class);
+
 Route::resource('order', OrderController::class);
 
 Route::resource('vehicle', VehicleController::class);
 
-Route::resource('vehicle_order', VehicleOrderController::class);

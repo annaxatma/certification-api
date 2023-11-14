@@ -12,7 +12,15 @@ class VehicleOrder extends Model
     protected $keyType = 'integer';
     protected $table = 'vehicle_order';
     protected $fillable = [
-        'Order_Id',
+        'Order_id',
         'Vehicle_Id'
     ];
+
+    public function vehicle(){
+        return $this->belongsTo(Vehicle::class, 'Vehicle_Id', 'Vehicle_Id');
+    }
+
+    public function order(){
+        return $this->belongsTo(Order::class, 'Order_id', 'Order_id');
+    }
 }

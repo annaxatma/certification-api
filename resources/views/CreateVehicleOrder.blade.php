@@ -21,9 +21,9 @@
 
                     <div class="form-group">
                         <label>Customer_ID : </label>
-                        <select name="Order_Id" class="custom-select">
+                        <select name="Order_id" class="custom-select">
                             @foreach ($vehicle_order as $vehicle_orders)
-                                <option value="{{$vehicle_orders['Order_Id']}}">{{ $vehicle_orders['Name'] }}</option>
+                                <option value="{{$vehicle_orders['Order_id']}}">{{ $vehicle_orders['Name'] }}</option>
                             @endforeach
                         </select>
                     </div>

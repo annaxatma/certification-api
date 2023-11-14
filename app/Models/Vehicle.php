@@ -21,18 +21,18 @@ class Vehicle extends Model
     ];
 
     public function car(){
-        return $this->belongsTo(Car::class, 'Vehicle_Id', 'car_id');
+        return $this->hasOne(Car::class, 'Car_id', 'Vehicle_Id');
     }
 
     public function motorcycle(){
-        return $this->belongsTo(Motorcycle::class, 'Vehicle_Id', 'motorcycle_id');
+        return $this->hasOne(Motorcycle::class, 'Motorcycle_id', 'Vehicle_Id');
     }
 
     public function truck(){
-        return $this->belongsTo(Truck::class, 'Vehicle_Id', 'truck_id');
+        return $this->hasOne(Truck::class, 'Truck_id', 'Vehicle_Id');
     }
 
     public function vehicleOrder(){
-        return $this->hasMany(VehicleOrder::class, 'Vehicle_Id', 'vehicleorder_id');
+        return $this->hasMany(VehicleOrder::class, 'Vehicleorder_id', 'Vehicle_Id');
     }
 }
