@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('motorcycle', function (Blueprint $table) {
             $table->id();
             $table->integer('Motorcycle_id');
-            $table->double('Baggage_Size');
-            $table->double('Gasoline_Capacity');
+            $table->integer('Baggage_Size');
+            $table->integer('Gasoline_Capacity');
             $table->timestamps();
         });
     }

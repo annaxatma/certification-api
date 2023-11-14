@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('Order_id')->autoIncrement()->index();
             $table->string('Name');
             $table->string('Address');
-            $table->string('Phone');
-            $table->string('Id_Card');
+            $table->integer('Phone');
+            $table->integer('Id_Card');
             $table->timestamps();
         });
     }

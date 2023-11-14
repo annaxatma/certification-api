@@ -55,13 +55,13 @@
                         
                                 if (selectedVehicle == 'Car') {
                                     inputField = 'Fuel_Type: <input type="text" name="Fuel_Type" required>';
-                                    inputField2 = 'Trunk_Size: <input type="number" name="Trunk_Size" required>';
+                                    inputField2 = 'Trunk_Size: <input type="text" name="Trunk_Size" required>';
                                 } else if (selectedVehicle == 'Motorcycle') {
-                                    inputField = 'Baggage_Size: <input type="number" name="Baggage_Size" required>';
-                                    inputField2 = 'Gasoline_Capacity: <input type="number" name="Gasoline_Capacity" required>';
+                                    inputField = 'Baggage_Size: <input type="text" name="Baggage_Size" required>';
+                                    inputField2 = 'Gasoline_Capacity: <input type="text" name="Gasoline_Capacity" required>';
                                 } else if (selectedVehicle == 'Truck') {
                                     inputField = 'Number_Wheels: <input type="text" id="jumlahBan" name="Number_Wheels" required>';
-                                    inputField2 = 'Cargo_Size: <input type="number" name="Cargo_Size" required>';
+                                    inputField2 = 'Cargo_Size: <input type="text" name="Cargo_Size" required>';
                                 }
                         
                                 $('#dynamicInput').html(inputField);

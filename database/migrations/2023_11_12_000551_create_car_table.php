@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('Car_id')->nullable();
             $table->string('Fuel_Type');
-            $table->double('Trunk_Size');
+            $table->integer('Trunk_Size');
             $table->timestamps();
         });
     }

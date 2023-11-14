@@ -28,6 +28,14 @@
                     <td>{{ $vehicle_orders['Order_id'] }}</td>
                     <td>{{ $vehicle_orders['Vehicle_Id'] }}</td>
                     <td>{{ $vehicle_orders->vehicle->Price}}</td>
+                    <td class="text-center">
+                        <form action="{{ route('vehicle_order.destroy',$vehicle_orders) }}" method="POST">   
+                        <a class="btn btn-primary" href="{{ route('vehicle_order.edit', $vehicle_orders) }}">Edit</a>
+                        @csrf
+                        @method('DELETE')      
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

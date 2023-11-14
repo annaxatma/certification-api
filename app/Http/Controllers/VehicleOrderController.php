@@ -85,10 +85,10 @@ class VehicleOrderController extends Controller
     public function edit($id)
     {
 
-        $vehicle_order = Order::all();
+        $order = Order::all();
         $vehicle = Vehicle::all();
         $vehicle_order = VehicleOrder::where('Vehicleorder_id', $id)->first();
-        return view('UpdateVehicleOrder', compact('vehicle_order', 'vehicle', 'vehicle_order'));
+        return view('UpdateVehicleOrder', compact('order', 'vehicle', 'vehicle_order'));
     }
 
     /**
@@ -101,8 +101,8 @@ class VehicleOrderController extends Controller
     public function update(Request $request, $id)
     {
         VehicleOrder::where('Vehicleorder_id', $id)->update([
-            'Customer_ID' => $request->Customer_ID,
-            'Kendaraan_ID' => $request->Kendaraan_ID,
+            'Order_id' => $request->Order_id,
+            'Vehicle_Id' => $request->Vehicle_Id,
         ]);
 
         return redirect(route('vehicle_order.index'));

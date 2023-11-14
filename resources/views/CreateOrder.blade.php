@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label>Id_Card : </label>
-                        <input type="text" class="form-control" name="Id_Card" required>
+                        <input type="number" class="form-control" name="Id_Card" required>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Add Order</button>

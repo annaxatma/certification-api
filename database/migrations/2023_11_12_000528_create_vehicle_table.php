@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('Year');
             $table->integer('Total_Passenger');
             $table->string('Manufacturer');
-            $table->double('Price');
+            $table->integer('Price');
             $table->string('Vehicle_Type');
             $table->timestamps();
         });

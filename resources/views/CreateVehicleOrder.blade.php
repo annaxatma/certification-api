@@ -11,7 +11,7 @@
                     {{ csrf_field() }}
 
                     <div class="form-group">
-                        <label>Kendaraan_ID : </label>
+                        <label>Vehicle : </label>
                         <select name="Vehicle_Id" class="custom-select">
                             @foreach ($vehicle as $vehicles)
                                     <option value="{{$vehicles['Vehicle_Id']}}">{{ $vehicles['Model'] }}</option>                               
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Customer_ID : </label>
+                        <label>Order : </label>
                         <select name="Order_id" class="custom-select">
                             @foreach ($vehicle_order as $vehicle_orders)
                                 <option value="{{$vehicle_orders['Order_id']}}">{{ $vehicle_orders['Name'] }}</option>
